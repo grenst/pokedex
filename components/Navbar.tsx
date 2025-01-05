@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import BurgerMenu from './BurgerMenu';
@@ -13,7 +12,7 @@ const Navbar = () => {
     <header className="bg-gray-800 text-white">
       <div className="container mx-auto flex justify-between items-center p-4">
         <Link href="/" className="flex items-center space-x-2">
-          <img src="/images/logo.svg" alt="Pokedex Logo" className="w-8 h-8" />
+          <img src="../public/flaticon-color-negative.svg" alt="Pokedex Logo" className="w-8 h-8" />
           <span className="text-xl font-bold">Pokedex</span>
         </Link>
         <nav className="hidden md:flex space-x-4">

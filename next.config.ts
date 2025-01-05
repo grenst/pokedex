@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: [
+      'raw.githubusercontent.com',
+      'pokeapi.co',
+      'assets.pokemon.com',
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

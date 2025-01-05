@@ -20,12 +20,12 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavorite(state, action: PayloadAction<Pokemon>) {
-      if (!state.favorites.find(pokemon => pokemon.id === action.payload.id)) {
+      if (!state.favorites.find(p => p.id === action.payload.id)) {
         state.favorites.push(action.payload);
       }
     },
     removeFavorite(state, action: PayloadAction<number>) {
-      state.favorites = state.favorites.filter(pokemon => pokemon.id !== action.payload);
+      state.favorites = state.favorites.filter(p => p.id !== action.payload);
     },
   },
 });

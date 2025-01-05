@@ -1,38 +1,31 @@
-import { ChangeEvent } from 'react';
+'use client';
+
+import React from 'react';
 
 interface TypeFilterProps {
-  types: string[];
-  selectedTypes: string[];
-  onChange: (types: string[]) => void;
+  selectedType: string;
+  onSelectType: (type: string) => void;
 }
 
-const TypeFilter: React.FC<TypeFilterProps> = ({ types, selectedTypes, onChange }) => {
-  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    if (checked) {
-      onChange([...selectedTypes, value]);
-    } else {
-      onChange(selectedTypes.filter(type => type !== value));
-    }
-  };
+const filterTypes = ['all', 'normal', 'poison', 'rock', 'fire', 'water', 'electric', 'bug'];
 
+const TypeFilter: React.FC<TypeFilterProps> = ({ selectedType, onSelectType }) => {
   return (
-    <div className="mb-4">
-      <h3 className="font-semibold mb-2">Фильтр по типам:</h3>
-      <div className="flex flex-wrap gap-2">
-        {types.map(type => (
-          <label key={type} className="flex items-center space-x-1">
-            <input
-              type="checkbox"
-              value={type}
-              checked={selectedTypes.includes(type)}
-              onChange={handleCheckboxChange}
-            />
-            <span className="capitalize">{type}</span>
-          </label>
-        ))}
-      </div>
-    </div>
+    <ul className="flex flex-wrap gap-2 mb-4">
+      {filterTypes.map(type => (
+        <li
+          key={type}
+          onClick={() => onSelectType(type)}
+          className={`cursor-pointer px-4 py-2 rounded-full border ${
+            selectedType === type
+              ? 'bg-blue-500 text-white'
+              : 'bg-white text-gray-700 hover:bg-blue-100'
+          } transition-colors duration-200 capitalize`}
+        >
+          {type.charAt(0).toUpperCase() + type.slice(1)}
+        </li>
+      ))}
+    </ul>
   );
 };
 

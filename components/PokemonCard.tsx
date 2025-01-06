@@ -126,33 +126,42 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
       
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {details ? (
-          <div className="flex flex-col md:flex-row items-center">
-            <Image src={details.image} alt={details.name} width={192} height={192} className="w-48 h-48" />
+          <div className="flex flex-row md:flex-row items-center">
             <div className="md:ml-6">
-              <h1 className="text-2xl capitalize font-bold">{details.name}</h1>
-              <p>Вес: {details.weight}</p>
-              <p>Рост: {details.height}</p>
-              <p>Способности: {details.abilities.join(', ')}</p>
-              <div className="flex space-x-2 mt-2">
-                {details.types.map(type => (
-                  <span
-                    key={type}
-                    className={`px-2 py-1 text-xs rounded bg-${type}-500 text-white capitalize`}
-                  >
-                    {type}
-                  </span>
-                ))}
+              <Image src={details.image} alt={details.name} width={192} height={192} className="w-48 h-48" />
+              <div className="flex md:flex-row items-center">
+                <div className="min-w-64 flex flex-col items-start">
+                  <h1 className="text-2xl capitalize font-bold">{details.name}</h1>
+                  <p>Вес: {details.weight}</p>
+                  <p>Рост: {details.height}</p>
+                  <p>Способности:</p>
+                  <p>  -  {details.abilities.join(', ')}</p>
+                  <div className="flex space-x-2 mt-2">
+                    {details.types.map(type => (
+                      <span
+                        key={type}
+                        className={`px-2 py-1 text-xs rounded bg-${type}-500 text-white capitalize`}
+                      >
+                        {type}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <br />
+                  <br />
+                  <br />
+                  <hr />
+                  <h2 className="text-lg font-semibold">Базовые характеристики:</h2>
+                  <ul className="list-disc list-inside">
+                    {details.stats.map(stat => (
+                      <li key={stat.name}>
+                        {stat.name}: {stat.value}
+                      </li>
+                    ))}
+                  </ul>
+                </div>              
               </div>
-              <div className="mt-4">
-                <h2 className="text-lg font-semibold">Базовые характеристики:</h2>
-                <ul className="list-disc list-inside">
-                  {details.stats.map(stat => (
-                    <li key={stat.name}>
-                      {stat.name}: {stat.value}
-                    </li>
-                  ))}
-                </ul>
-              </div>              
               <button
                 onClick={handleFavorite}
                 className="mt-4 flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"

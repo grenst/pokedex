@@ -99,9 +99,11 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="container mx-auto p-4">
+      <div className="container  mx-auto p-4">
         <SearchBar value={search} onChange={setSearch} />
-        <TypeFilter selectedType={selectedType} onSelectType={handleSelectType} />
+        <div className="flex items-center justify-center">
+          <TypeFilter selectedType={selectedType} onSelectType={handleSelectType} />
+        </div>
         {filteredPokemon.length === 0 && !isLoading ? (
           <p className="text-center mt-4">Нет покемонов, соответствующих выбранным фильтрам.</p>
         ) : (

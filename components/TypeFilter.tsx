@@ -16,9 +16,9 @@ const TypeFilter: React.FC<TypeFilterProps> = ({ selectedType, onSelectType }) =
         <li
           key={type}
           onClick={() => onSelectType(type)}
-          className={`cursor-pointer px-4 py-2 rounded-full border ${
+          className={`min-w-16 text-center cursor-pointer px-2 py-1 rounded-lg ${
             selectedType === type
-              ? 'bg-blue-500 text-white'
+              ? 'bg-gray-700 text-white'
               : 'bg-white text-gray-700 hover:bg-blue-100'
           } transition-colors duration-200 capitalize`}
         >

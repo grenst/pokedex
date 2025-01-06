@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Navbar from '../../components/Navbar';
 import PokemonCard from '../../components/PokemonCard';
 import TypeFilter from '../../components/TypeFilter';
 import ScrollToTop from '../../components/ScrollToTop';
@@ -11,8 +10,6 @@ import { RootState } from '../../store/store';
 const FavoritesPage = () => {
   const favorites = useSelector((state: RootState) => state.favorites.favorites);
   const [selectedType, setSelectedType] = useState<string>('all');
-
-  const filterTypes = ['all', 'normal', 'poison', 'rock', 'fire', 'water', 'electric'];
 
   const handleSelectType = (type: string) => {
     setSelectedType(type);
